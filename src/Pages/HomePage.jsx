@@ -1,10 +1,13 @@
 import React from "react";
 import Deneme from "../Components/Deneme";
+import "../Styles/homepage.scss";
 
 function HomePage() {
   return (
     <React.StrictMode>
-      <Deneme />
+      <div className="container">
+        <Deneme />
+      </div>
     </React.StrictMode>
   );
 }

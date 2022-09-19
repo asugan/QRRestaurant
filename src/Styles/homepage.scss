@@ -1,0 +1,32 @@
+body{
+    background-color: black;
+}
+
+h1{
+    text-align: center;
+    color: white;
+}
+
+h5{
+    color: white;
+    font-size: 20px;
+}
+
+.altcontainer{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.background{
+    background-color: red;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.container{
+    img{
+        width: 10rem;
+        height: 6rem;
+    }
+}

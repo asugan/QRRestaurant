@@ -4,7 +4,7 @@ function Deneme() {
   const [yemeks, setYemek] = useState([]);
 
   useEffect(() => {
-    fetch("/api/getall")
+    fetch("api/getCategory/Yemekler")
       .then((response) => response.json())
       .then((data) => {
         setYemek(data);
@@ -19,9 +19,12 @@ function Deneme() {
 
       {yemeks.map((yemek, id) => {
         return (
-          <div className="" key={id}>
+          <div className="background" key={id}>
             <h1>{yemek.yemek_adi}</h1>
-            <h5>{yemek.fiyat}</h5>
+            <div className="altcontainer">
+              <img src={`images/${yemek.image}`} alt="" />
+              <h5>{yemek.fiyat} ₺</h5>
+            </div>
           </div>
         );
       })}

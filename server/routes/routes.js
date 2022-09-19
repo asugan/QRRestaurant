@@ -8,7 +8,7 @@ const router = express.Router();
 
 const storage = SharpMulter({
   destination: (req, file, cb) => {
-    cb(null, path.resolve("public/uploads"));
+    cb(null, path.resolve("public/images"));
   },
   imageOptions: {
     fileFormat: "webp",
@@ -22,19 +22,25 @@ const storage = SharpMulter({
 const upload = multer({ storage: storage });
 
 //Post Method
-router.post("/post", async (req, res) => {
-  const data = new Yemek({
-    yemek_adi: req.body.yemek_adi,
-    fiyat: req.body.fiyat,
-  });
+router.post(
+  "/post",
+  upload.fields([{ name: "image", maxCount: 1 }]),
+  async (req, res) => {
+    const data = new Yemek({
+      yemek_adi: req.body.yemek_adi,
+      fiyat: req.body.fiyat,
+      kategori: req.body.kategori,
+      image: req.files.image[0].filename,
+    });
 
-  try {
-    const dataToSave = await data.save();
-    res.status(200).json(dataToSave);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
+    try {
+      const dataToSave = await data.save();
+      res.status(200).json(dataToSave);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
   }
-});
+);
 
 //Get all Method
 router.get("/getAll", async (req, res) => {
@@ -59,7 +65,7 @@ router.get("/getOne/:id", async (req, res) => {
 //Get by ID Category
 router.get("/getCategory/:category", async (req, res) => {
   try {
-    const data = await Yemek.find({ News_category: req.params.category });
+    const data = await Yemek.find({ kategori: req.params.category });
     res.json(data);
   } catch (error) {
     res.status(500).json({ message: error.message });

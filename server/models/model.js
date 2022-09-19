@@ -9,6 +9,14 @@ const YemekSchema = new mongoose.Schema({
     required: true,
     type: Number,
   },
+  kategori: {
+    required: true,
+    type: String,
+  },
+  image: {
+    required: true,
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("Yemek", YemekSchema);
