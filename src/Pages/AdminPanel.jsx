@@ -1,10 +1,10 @@
 import React from "react";
-import AdminPost from "../Components/AdminPost";
+import AdminHome from "../Components/AdminHome";
 
 function AdminPanel() {
   return (
     <React.StrictMode>
-      <AdminPost />
+      <AdminHome />
     </React.StrictMode>
   );
 }

@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AdminPanel from "./Pages/AdminPanel";
+import AdminPanelPost from "./Pages/AdminPanelPost";
 import HomePage from "./Pages/HomePage";
 import Masa from "./Pages/Masa";
 import Shop from "./Pages/Shop";
@@ -13,6 +14,7 @@ root.render(
       <Route path="/" element={<HomePage />} />
       <Route path="/masalar" element={<Masa />} />
       <Route path="/admin" element={<AdminPanel />} />
+      <Route path="/admin/post" element={<AdminPanelPost />} />
       <Route exact path="/masa/:masaId" element={<Shop />} />
     </Routes>
   </BrowserRouter>
