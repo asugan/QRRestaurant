@@ -27,6 +27,8 @@ function ShopPage() {
       });
   }, []);
 
+  let yemeksec = () => {};
+
   let handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -60,6 +62,7 @@ function ShopPage() {
               <img src={`/images/${yemek.image}`} alt="" />
               <h5>{yemek.fiyat} ₺</h5>
             </div>
+            <button>Sepete Ekle</button>
           </div>
         );
       })}
