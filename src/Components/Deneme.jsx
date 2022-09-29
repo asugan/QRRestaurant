@@ -4,7 +4,7 @@ function Deneme() {
   const [yemeks, setYemek] = useState([]);
 
   useEffect(() => {
-    fetch("api/getCategory/Yemekler")
+    fetch("api/getall")
       .then((response) => response.json())
       .then((data) => {
         setYemek(data);
