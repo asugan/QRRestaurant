@@ -5,16 +5,9 @@ import "../Styles/homepage.scss";
 
 function ShopPage() {
   const [yemeks, setYemek] = useState([]);
-  const [message, setMessage] = useState("");
-  const [secilenyemek, SetSecilen] = useState([]);
   const masa_numarasi = useParams();
   const hamham = [masa_numarasi];
-  console.log(hamham[0].masaId);
-  console.log(
-    yemeks.map((id) => {
-      return console.log(JSON.stringify(id._id));
-    })
-  );
+  const myarray = [];
 
   useEffect(() => {
     fetch("/api/getall")
@@ -27,13 +20,16 @@ function ShopPage() {
       });
   }, []);
 
-  let yemeksec = () => {};
+  let yemeksec = async (id) => {
+    myarray.push({ _id: id });
+    console.log(myarray);
+  };
 
   let handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      let res = await fetch("/api/post/masa", {
+      await fetch("/api/post/masa", {
         method: "POST",
         mode: "cors",
         headers: {
@@ -42,7 +38,7 @@ function ShopPage() {
 
         body: JSON.stringify({
           masa_numarasi: hamham[0].masaId,
-          yemek: yemeks,
+          yemek: myarray,
         }),
       });
     } catch (err) {
@@ -62,7 +58,7 @@ function ShopPage() {
               <img src={`/images/${yemek.image}`} alt="" />
               <h5>{yemek.fiyat} ₺</h5>
             </div>
-            <button>Sepete Ekle</button>
+            <button onClick={(e) => yemeksec(yemek._id, e)}>Sepete Ekle</button>
           </div>
         );
       })}
