@@ -10,7 +10,10 @@ function ShopPage() {
   const [orders, setOrder] = useState([]);
   const masa_numarasi = useParams();
   const hamham = [masa_numarasi];
-  const yemeknum = [];
+
+  if (number <= 0) {
+    setNumber(1);
+  }
 
   useEffect(() => {
     fetch("/api/getall")
@@ -28,6 +31,7 @@ function ShopPage() {
 
     setOrder([...orders, { _id: id }]);
     numberSend([...sendnumber, { number: number }]);
+    setNumber(1);
   };
 
   const numberfuncplus = () => {
