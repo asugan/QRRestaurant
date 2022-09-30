@@ -48,8 +48,15 @@ router.post("/post/masa", async (req, res) => {
     masa_numarasi: req.body.masa_numarasi,
   });
 
-  req.body.yemek.map((id) => {
+  const hamham = req.body.yemek;
+  const yamyam = req.body.yemek_numarasi;
+
+  hamham.map((id) => {
     return masadata.yemek.push(id._id);
+  });
+
+  yamyam.map((id) => {
+    return masadata.yemek_number.push(id.number);
   });
 
   try {

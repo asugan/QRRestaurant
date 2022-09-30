@@ -11,6 +11,13 @@ const MasaSchema = new mongoose.Schema({
       ref: "Yemek",
     },
   ],
+  yemek_number: [
+    {
+      type: Number,
+      required: true,
+      default: 1,
+    },
+  ],
 });
 
 module.exports = mongoose.model("Masa", MasaSchema);

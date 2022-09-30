@@ -5,9 +5,12 @@ import "../Styles/homepage.scss";
 
 function ShopPage() {
   const [yemeks, setYemek] = useState([]);
+  const [number, setNumber] = useState(1);
+  const [sendnumber, numberSend] = useState([]);
+  const [orders, setOrder] = useState([]);
   const masa_numarasi = useParams();
   const hamham = [masa_numarasi];
-  const myarray = [];
+  const yemeknum = [];
 
   useEffect(() => {
     fetch("/api/getall")
@@ -20,9 +23,19 @@ function ShopPage() {
       });
   }, []);
 
-  let yemeksec = async (id) => {
-    myarray.push({ _id: id });
-    console.log(myarray);
+  let yemeksec = async (id, e) => {
+    e.preventDefault();
+
+    setOrder([...orders, { _id: id }]);
+    numberSend([...sendnumber, { number: number }]);
+  };
+
+  const numberfuncplus = () => {
+    setNumber((count) => count + 1);
+  };
+
+  let numberfuncminus = (e) => {
+    setNumber((count) => count - 1);
   };
 
   let handleSubmit = async (e) => {
@@ -38,13 +51,18 @@ function ShopPage() {
 
         body: JSON.stringify({
           masa_numarasi: hamham[0].masaId,
-          yemek: myarray,
+          yemek: orders,
+          yemek_numarasi: sendnumber,
         }),
       });
     } catch (err) {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    console.log(orders, sendnumber);
+  }, [orders, sendnumber]);
 
   return (
     <div>
@@ -57,8 +75,11 @@ function ShopPage() {
             <div className="altcontainer">
               <img src={`/images/${yemek.image}`} alt="" />
               <h5>{yemek.fiyat} ₺</h5>
+              <h1>{number}</h1>
             </div>
             <button onClick={(e) => yemeksec(yemek._id, e)}>Sepete Ekle</button>
+            <button onClick={numberfuncplus}>+</button>
+            <button onClick={numberfuncminus}>--</button>
           </div>
         );
       })}
