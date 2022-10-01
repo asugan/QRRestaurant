@@ -49,6 +49,9 @@ h5{
         flex-direction: column;
         grid-column-start: 2;
         grid-column-end: 3;
-      
+      .flexbutton{
+        display: flex;
+        gap: 4rem;
+      }
     }
 }

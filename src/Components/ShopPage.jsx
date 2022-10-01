@@ -27,13 +27,19 @@ function ShopPage() {
       });
   }, []);
 
-  let yemeksec = async (id, ad, fiyat, e) => {
+  const yemeksec = async (id, ad, fiyat, e) => {
     e.preventDefault();
 
     setCart([...cart, { yemek_adi: ad, yemek_fiyati: fiyat }]);
     setOrder([...orders, { _id: id }]);
     numberSend([...sendnumber, { number: number }]);
     setNumber(1);
+  };
+
+  const removeFromCart = (index) => {
+    setCart((cart) => cart.filter((_, i) => i !== index));
+    numberSend((sendnumber) => sendnumber.filter((_, i) => i !== index));
+    setOrder((orders) => orders.filter((_, i) => i !== index));
   };
 
   const numberfuncplus = () => {
@@ -104,18 +110,23 @@ function ShopPage() {
       <div className="ana">
         <div className="cart">
           <div className="mycartyemek">
-            {cart.map((items) => {
+            {cart.map((items, index) => {
               return (
                 <div className="cartyemek">
+                  <button onClick={() => removeFromCart(index)}>Delete</button>
                   <h5>{items.yemek_adi}</h5>
-                  <h5>{items.yemek_fiyati}</h5>
+                  <h5>{items.yemek_fiyati} ₺</h5>
                 </div>
               );
             })}
           </div>
           <div className="cartnumber">
             {sendnumber.map((items) => {
-              return <h5>{items.number}</h5>;
+              return (
+                <div className="flexbutton">
+                  <h5>{items.number}</h5>
+                </div>
+              );
             })}
           </div>
         </div>
