@@ -30,3 +30,25 @@ h5{
         height: 6rem;
     }
 }
+
+
+
+.cart{
+ display: grid;
+ grid-template-columns: repeat(2,1fr);
+    .mycartyemek{
+       grid-column-start: 1;
+       grid-column-end: 2;
+      .cartyemek{
+        display: flex;
+        gap: 4rem;
+      }
+    }
+    .cartnumber{
+        display: flex;
+        flex-direction: column;
+        grid-column-start: 2;
+        grid-column-end: 3;
+      
+    }
+}

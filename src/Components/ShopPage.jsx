@@ -8,6 +8,7 @@ function ShopPage() {
   const [number, setNumber] = useState(1);
   const [sendnumber, numberSend] = useState([]);
   const [orders, setOrder] = useState([]);
+  const [cart, setCart] = useState([]);
   const masa_numarasi = useParams();
   const hamham = [masa_numarasi];
 
@@ -26,9 +27,10 @@ function ShopPage() {
       });
   }, []);
 
-  let yemeksec = async (id, e) => {
+  let yemeksec = async (id, ad, fiyat, e) => {
     e.preventDefault();
 
+    setCart([...cart, { yemek_adi: ad, yemek_fiyati: fiyat }]);
     setOrder([...orders, { _id: id }]);
     numberSend([...sendnumber, { number: number }]);
     setNumber(1);
@@ -46,7 +48,7 @@ function ShopPage() {
     e.preventDefault();
 
     try {
-      await fetch("/api/post/masa", {
+      let res = await fetch("/api/post/masa", {
         method: "POST",
         mode: "cors",
         headers: {
@@ -59,14 +61,19 @@ function ShopPage() {
           yemek_numarasi: sendnumber,
         }),
       });
+      if (res.status === 200) {
+        setCart([]);
+        numberSend([]);
+        setOrder([]);
+      }
     } catch (err) {
       console.log(err);
     }
   };
 
   useEffect(() => {
-    console.log(orders, sendnumber);
-  }, [orders, sendnumber]);
+    console.log(orders, sendnumber, cart);
+  }, [orders, sendnumber, cart]);
 
   return (
     <div>
@@ -81,12 +88,38 @@ function ShopPage() {
               <h5>{yemek.fiyat} ₺</h5>
               <h1>{number}</h1>
             </div>
-            <button onClick={(e) => yemeksec(yemek._id, e)}>Sepete Ekle</button>
+            <button
+              onClick={(e) =>
+                yemeksec(yemek._id, yemek.yemek_adi, yemek.fiyat, e)
+              }
+            >
+              Sepete Ekle
+            </button>
             <button onClick={numberfuncplus}>+</button>
             <button onClick={numberfuncminus}>--</button>
           </div>
         );
       })}
+
+      <div className="ana">
+        <div className="cart">
+          <div className="mycartyemek">
+            {cart.map((items) => {
+              return (
+                <div className="cartyemek">
+                  <h5>{items.yemek_adi}</h5>
+                  <h5>{items.yemek_fiyati}</h5>
+                </div>
+              );
+            })}
+          </div>
+          <div className="cartnumber">
+            {sendnumber.map((items) => {
+              return <h5>{items.number}</h5>;
+            })}
+          </div>
+        </div>
+      </div>
 
       <form onSubmit={handleSubmit}>
         <button type="submit">Create</button>
