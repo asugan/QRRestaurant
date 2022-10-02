@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import "../Styles/tablepage.scss";
 
 function TablesPage() {
   const [masa1, setMasa1] = useState([]);
@@ -124,77 +125,103 @@ function TablesPage() {
   }, []);
 
   return (
-    <div>
-      <h1>Masa 1</h1>
-      {masa1.map((items) => {
-        return <h1 key={items.yemek_adi}>{items.yemek_adi}</h1>;
-      })}
-      {masanum1.map((items) => {
-        return <h1 key={items}>{items}</h1>;
-      })}
-      <h1>Masa 2</h1>
-      {masa2.map((items) => {
-        return <h1 key={items.yemek_adi}>{items.yemek_adi}</h1>;
-      })}
-      {masanum2.map((items) => {
-        return <h1 key={items}>{items}</h1>;
-      })}
-      <h1>Masa 3</h1>
-      {masa3.map((items) => {
-        return <h1 key={items.yemek_adi}>{items.yemek_adi}</h1>;
-      })}
-      {masanum3.map((items) => {
-        return <h1 key={items}>{items}</h1>;
-      })}
-      <h1>Masa 4</h1>
-      {masa4.map((items) => {
-        return <h1 key={items.yemek_adi}>{items.yemek_adi}</h1>;
-      })}
-      {masanum4.map((items) => {
-        return <h1 key={items}>{items}</h1>;
-      })}
-      <h1>Masa 5</h1>
-      {masa5.map((items) => {
-        return <h1 key={items.yemek_adi}>{items.yemek_adi}</h1>;
-      })}
-      {masanum5.map((items) => {
-        return <h1 key={items}>{items}</h1>;
-      })}
-      <h1>Masa 6</h1>
-      {masa6.map((items) => {
-        return <h1 key={items.yemek_adi}>{items.yemek_adi}</h1>;
-      })}
-      {masanum6.map((items) => {
-        return <h1 key={items}>{items}</h1>;
-      })}
-      <h1>Masa 7</h1>
-      {masa7.map((items) => {
-        return <h1 key={items.yemek_adi}>{items.yemek_adi}</h1>;
-      })}
-      {masanum7.map((items) => {
-        return <h1 key={items}>{items}</h1>;
-      })}
-      <h1>Masa 8</h1>
-      {masa8.map((items) => {
-        return <h1 key={items.yemek_adi}>{items.yemek_adi}</h1>;
-      })}
-      {masanum8.map((items) => {
-        return <h1 key={items}>{items}</h1>;
-      })}
-      <h1>Masa 9</h1>
-      {masa9.map((items) => {
-        return <h1 key={items.yemek_adi}>{items.yemek_adi}</h1>;
-      })}
-      {masanum9.map((items) => {
-        return <h1 key={items}>{items}</h1>;
-      })}
-      <h1>Masa 10</h1>
-      {masa10.map((items) => {
-        return <h1 key={items.yemek_adi}>{items.yemek_adi}</h1>;
-      })}
-      {masanum10.map((items) => {
-        return <h1 key={items}>{items}</h1>;
-      })}
+    <div className="tablecontainer">
+      <div className="masa">
+        <h1>Masa 1</h1>
+        <div className="masadiv">
+          <div className="">
+            {masa1.map((items) => {
+              return <h1 key={items.yemek_adi}>{items.yemek_adi}</h1>;
+            })}
+          </div>
+          <div className="">
+            {masanum1.map((items) => {
+              return <h1 key={items}>{items}</h1>;
+            })}
+          </div>
+        </div>
+      </div>
+      <div className="masa">
+        <h1>Masa 2</h1>
+        {masa2.map((items) => {
+          return <h1 key={items.yemek_adi}>{items.yemek_adi}</h1>;
+        })}
+        {masanum2.map((items) => {
+          return <h1 key={items}>{items}</h1>;
+        })}
+      </div>
+      <div className="masa">
+        <h1>Masa 3</h1>
+        {masa3.map((items) => {
+          return <h1 key={items.yemek_adi}>{items.yemek_adi}</h1>;
+        })}
+        {masanum3.map((items) => {
+          return <h1 key={items}>{items}</h1>;
+        })}
+      </div>
+      <div className="masa">
+        <h1>Masa 4</h1>
+        {masa4.map((items) => {
+          return <h1 key={items.yemek_adi}>{items.yemek_adi}</h1>;
+        })}
+        {masanum4.map((items) => {
+          return <h1 key={items}>{items}</h1>;
+        })}
+      </div>
+      <div className="masa">
+        <h1>Masa 5</h1>
+        {masa5.map((items) => {
+          return <h1 key={items.yemek_adi}>{items.yemek_adi}</h1>;
+        })}
+        {masanum5.map((items) => {
+          return <h1 key={items}>{items}</h1>;
+        })}
+      </div>
+      <div className="masa">
+        <h1>Masa 6</h1>
+        {masa6.map((items) => {
+          return <h1 key={items.yemek_adi}>{items.yemek_adi}</h1>;
+        })}
+        {masanum6.map((items) => {
+          return <h1 key={items}>{items}</h1>;
+        })}
+      </div>
+      <div className="masa">
+        <h1>Masa 7</h1>
+        {masa7.map((items) => {
+          return <h1 key={items.yemek_adi}>{items.yemek_adi}</h1>;
+        })}
+        {masanum7.map((items) => {
+          return <h1 key={items}>{items}</h1>;
+        })}
+      </div>
+      <div className="masa">
+        <h1>Masa 8</h1>
+        {masa8.map((items) => {
+          return <h1 key={items.yemek_adi}>{items.yemek_adi}</h1>;
+        })}
+        {masanum8.map((items) => {
+          return <h1 key={items}>{items}</h1>;
+        })}
+      </div>
+      <div className="masa">
+        <h1>Masa 9</h1>
+        {masa9.map((items) => {
+          return <h1 key={items.yemek_adi}>{items.yemek_adi}</h1>;
+        })}
+        {masanum9.map((items) => {
+          return <h1 key={items}>{items}</h1>;
+        })}
+      </div>
+      <div className="masa">
+        <h1>Masa 10</h1>
+        {masa10.map((items) => {
+          return <h1 key={items.yemek_adi}>{items.yemek_adi}</h1>;
+        })}
+        {masanum10.map((items) => {
+          return <h1 key={items}>{items}</h1>;
+        })}
+      </div>
     </div>
   );
 }

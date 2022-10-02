@@ -6,16 +6,18 @@ import AdminPanelPost from "./Pages/AdminPanelPost";
 import HomePage from "./Pages/HomePage";
 import Masa from "./Pages/Masa";
 import Shop from "./Pages/Shop";
+import NotFoundPage from "./Pages/NotFoundPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/masalar" element={<Masa />} />
-      <Route path="/admin" element={<AdminPanel />} />
-      <Route path="/admin/post" element={<AdminPanelPost />} />
+      <Route exact path="/" element={<HomePage />} />
+      <Route exact path="/masalar" element={<Masa />} />
+      <Route exact path="/admin" element={<AdminPanel />} />
+      <Route exact path="/admin/post" element={<AdminPanelPost />} />
       <Route exact path="/masa/:masaId" element={<Shop />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   </BrowserRouter>
 );

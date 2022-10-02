@@ -1,0 +1,22 @@
+.tablecontainer{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+
+    .masa{
+        text-align: center;
+        border: 2px solid white;
+        margin-top: 2rem;
+        gap: 2rem;
+        margin-left: 2rem;
+        margin-right: 2rem;
+        min-height: 400px;
+    }
+
+    .masadiv{
+        display: flex;
+        text-align: start;
+        justify-content: center;
+        align-items: center;
+        gap: 4rem;
+    }
+}
