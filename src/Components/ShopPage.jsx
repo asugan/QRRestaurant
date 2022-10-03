@@ -6,8 +6,6 @@ import "../Styles/homepage.scss";
 function ShopPage() {
   const [yemeks, setYemek] = useState([]);
   const [number, setNumber] = useState(1);
-  const [sendnumber, numberSend] = useState([]);
-  const [orders, setOrder] = useState([]);
   const [cart, setCart] = useState([]);
   const masa_numarasi = useParams();
   const hamham = [masa_numarasi];
@@ -30,16 +28,14 @@ function ShopPage() {
   const yemeksec = async (id, ad, fiyat, e) => {
     e.preventDefault();
 
-    setCart([...cart, { yemek_adi: ad, yemek_fiyati: fiyat }]);
-    setOrder([...orders, { _id: id }]);
-    numberSend([...sendnumber, { number: number }]);
+    setCart([...cart, { yemek_adi: ad, yemek_fiyati: fiyat, number: number }]);
+
+    console.log(cart);
     setNumber(1);
   };
 
   const removeFromCart = (index) => {
     setCart((cart) => cart.filter((_, i) => i !== index));
-    numberSend((sendnumber) => sendnumber.filter((_, i) => i !== index));
-    setOrder((orders) => orders.filter((_, i) => i !== index));
   };
 
   const numberfuncplus = () => {
@@ -63,14 +59,11 @@ function ShopPage() {
 
         body: JSON.stringify({
           masa_numarasi: hamham[0].masaId,
-          yemek: orders,
-          yemek_numarasi: sendnumber,
+          yemek: cart,
         }),
       });
       if (res.status === 200) {
         setCart([]);
-        numberSend([]);
-        setOrder([]);
       }
     } catch (err) {
       console.log(err);
@@ -78,8 +71,8 @@ function ShopPage() {
   };
 
   useEffect(() => {
-    console.log(orders, sendnumber, cart);
-  }, [orders, sendnumber, cart]);
+    console.log(cart);
+  }, [cart]);
 
   return (
     <div>
@@ -116,14 +109,6 @@ function ShopPage() {
                   <button onClick={() => removeFromCart(index)}>Delete</button>
                   <h5>{items.yemek_adi}</h5>
                   <h5>{items.yemek_fiyati} ₺</h5>
-                </div>
-              );
-            })}
-          </div>
-          <div className="cartnumber">
-            {sendnumber.map((items) => {
-              return (
-                <div className="flexbutton">
                   <h5>{items.number}</h5>
                 </div>
               );

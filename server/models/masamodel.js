@@ -7,15 +7,12 @@ const MasaSchema = new mongoose.Schema({
   },
   yemek: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Yemek",
-    },
-  ],
-  yemek_number: [
-    {
-      type: Number,
-      required: true,
-      default: 1,
+      yemek_adi: {
+        type: String,
+      },
+      quantity: {
+        type: Number,
+      },
     },
   ],
 });
