@@ -3,9 +3,9 @@ import TablesPage from "../Components/TablesPage";
 
 function Masa() {
   return (
-    <React.StrictMode>
+    <div className="">
       <TablesPage />;
-    </React.StrictMode>
+    </div>
   );
 }
 
