@@ -7,6 +7,7 @@ function TablesPage() {
 
   const fetchme = async () => {
     try {
+      setMasa([]);
       for (let i = 1; i < 4; i++) {
         const fetchh = await fetch(`/api/getyemek/${i}`);
         const json = await fetchh.json();
@@ -24,6 +25,11 @@ function TablesPage() {
   useEffect(() => {
     fetchme();
   }, []);
+
+  // const interval = setInterval(() => {
+  //   fetchme();
+  // }, 2000);
+  // return () => clearInterval(interval);
 
   console.log(masa);
 
