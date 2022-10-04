@@ -14,16 +14,37 @@ function ShopPage() {
     setNumber(1);
   }
 
+  let asyncf = async () => {
+    let fetch1 = await fetch("/api/getCategory/Yemekler");
+    let data1 = await fetch1.json();
+    let fetch2 = await fetch("/api/getCategory/İçecekler");
+    let data2 = await fetch2.json();
+    let fetch3 = await fetch("/api/getCategory/Tatlılar");
+    let data3 = await fetch3.json();
+
+    setYemek([data1, data2, data3]);
+  };
+
   useEffect(() => {
-    fetch("/api/getall")
-      .then((response) => response.json())
-      .then((data) => {
-        setYemek(data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    asyncf();
   }, []);
+
+  // setYemek([]);
+  // const yiyecek = ["Yemekler", "İçecekler", "Tatlılar"];
+  // yiyecek.forEach(async (element) => {
+  //   let fetchh = await fetch(`/api/getCategory/${element}`);
+  //   let data = await fetchh.json();
+  //   setYemek((prevPosts) => [...prevPosts, data]);
+  // });
+
+  // fetch(`/api/getCategory/${element}`)
+  //   .then((response) => response.json())
+  //   .then((data) => {
+  //     setYemek(data);
+  //   })
+  //   .catch((err) => {
+  //     console.log(err.message);
+  //   });
 
   const yemeksec = async (id, ad, fiyat, e) => {
     e.preventDefault();
@@ -71,14 +92,14 @@ function ShopPage() {
   };
 
   useEffect(() => {
-    console.log(cart);
-  }, [cart]);
+    console.log(yemeks);
+  }, [yemeks]);
 
   return (
     <div>
       <h1>Yemek Adları</h1>
 
-      {yemeks.map((yemek, id) => {
+      {yemeks[0]?.map((yemek, id) => {
         return (
           <div className="background" key={id}>
             <h1>{yemek.yemek_adi}</h1>
