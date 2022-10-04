@@ -7,6 +7,7 @@ import HomePage from "./Pages/HomePage";
 import Masa from "./Pages/Masa";
 import Shop from "./Pages/Shop";
 import NotFoundPage from "./Pages/NotFoundPage";
+import AdminRegister from "./Pages/AdminRegister";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -16,6 +17,7 @@ root.render(
       <Route exact path="/masalar" element={<Masa />} />
       <Route exact path="/admin" element={<AdminPanel />} />
       <Route exact path="/admin/post" element={<AdminPanelPost />} />
+      <Route exact path="/admin/register" element={<AdminRegister />} />
       <Route exact path="/masa/:masaId" element={<Shop />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>

@@ -1,6 +1,7 @@
 const express = require("express");
 const Yemek = require("../models/model");
 const Masa = require("../models/masamodel");
+const Admin = require("../models/adminModel");
 const multer = require("multer");
 const path = require("path");
 const SharpMulter = require("sharp-multer");
@@ -60,6 +61,23 @@ router.post("/post/masa", async (req, res) => {
   try {
     const masadataToSave = await masadata.save();
     res.status(200).json(masadataToSave);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
+//Admin Register
+
+router.post("/post/newAdmin", async (req, res) => {
+  const admin = new Admin({
+    username: req.body.username,
+    password: req.body.password,
+    isAdmin: req.body.userisadmin,
+  });
+
+  try {
+    const dataadmin = await admin.save();
+    res.status(200).json(dataadmin);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
