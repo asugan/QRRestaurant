@@ -5,6 +5,7 @@ const Admin = require("../models/adminModel");
 const multer = require("multer");
 const path = require("path");
 const SharpMulter = require("sharp-multer");
+const { requireUser, optionalUser } = require("../propelauth");
 
 const router = express.Router();
 
@@ -43,6 +44,18 @@ router.post(
     }
   }
 );
+
+router.get("/whoami", requireUser, (req, res) => {
+  res.json({ userId: req.user.userId });
+});
+
+router.get("/whoami_optional", optionalUser, (req, res) => {
+  if (req.user) {
+    res.json({ userId: req.user.userId });
+  } else {
+    res.json({ userId: null });
+  }
+});
 
 router.post("/post/masa", async (req, res) => {
   const masadata = new Masa({

@@ -1,11 +1,12 @@
 import React from "react";
+import { withAuthInfo } from "@propelauth/react";
 
-function AdminHome() {
+function AdminHome({ user }) {
   return (
-    <div>
-      <h1>Hello Admin</h1>
+    <div className="admincontainer">
+      {user ? <h1>Hello Admin</h1> : <p>Please Log In</p>}
     </div>
   );
 }
 
-export default AdminHome;
+export default withAuthInfo(AdminHome);

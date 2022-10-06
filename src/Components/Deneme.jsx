@@ -1,33 +1,13 @@
-import React, { useEffect, useState } from "react";
+import AuthButtons from "../AuthButtons";
+import AuthenticatedRequestToBackend from "../AuthenticatedRequestToBackend";
+import AuthInfoOnFrontend from "../AuthInfoOnFrontend";
 
 function Deneme() {
-  const [yemeks, setYemek] = useState([]);
-
-  useEffect(() => {
-    fetch("api/getall")
-      .then((response) => response.json())
-      .then((data) => {
-        setYemek(data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }, []);
   return (
-    <div>
-      <h1>Yemek Adları</h1>
-
-      {yemeks.map((yemek, id) => {
-        return (
-          <div className="background" key={id}>
-            <h1>{yemek.yemek_adi}</h1>
-            <div className="altcontainer">
-              <img src={`images/${yemek.image}`} alt="" />
-              <h5>{yemek.fiyat} ₺</h5>
-            </div>
-          </div>
-        );
-      })}
+    <div className="App">
+      <AuthButtons />
+      <AuthInfoOnFrontend />
+      <AuthenticatedRequestToBackend />
     </div>
   );
 }

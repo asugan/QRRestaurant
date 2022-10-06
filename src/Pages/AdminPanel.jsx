@@ -3,9 +3,9 @@ import AdminHome from "../Components/AdminHome";
 
 function AdminPanel() {
   return (
-    <React.StrictMode>
+    <div className="admin">
       <AdminHome />
-    </React.StrictMode>
+    </div>
   );
 }
 

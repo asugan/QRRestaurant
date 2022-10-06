@@ -1,8 +1,9 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import "../Styles/tablepage.scss";
+import { withAuthInfo } from "@propelauth/react";
 
-function TablesPage() {
+function TablesPage({ user }) {
   const [masa, setMasa] = useState([]);
 
   const fetchme = async () => {
@@ -34,94 +35,96 @@ function TablesPage() {
   console.log(masa);
 
   return (
-    <div className="tablecontainer">
-      <div className="masa">
-        <h1 className="me">Masa 1</h1>
-        <div className="hamham">
-          {masa[0]?.map((items) => {
-            return (
-              <div key={items.yemek_adi} className="masadiv">
-                <ul>
-                  <li>{items.yemek_adi}</li>
-                </ul>
-                <ul>
-                  <li>{items.quantity}</li>
-                </ul>
-              </div>
-            );
-          })}
+    <div className="container">
+      <div className="tablecontainer">
+        <div className="masa">
+          <h1 className="me">Masa 1</h1>
+          <div className="hamham">
+            {masa[0]?.map((items) => {
+              return (
+                <div key={items.yemek_adi} className="masadiv">
+                  <ul>
+                    <li>{items.yemek_adi}</li>
+                  </ul>
+                  <ul>
+                    <li>{items.quantity}</li>
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </div>
-      <div className="masa">
-        <h1 className="me">Masa 2</h1>
-        <div className="hamham">
-          {masa[1]?.map((items) => {
-            return (
-              <div key={items.yemek_adi} className="masadiv">
-                <ul>
-                  <li>{items.yemek_adi}</li>
-                </ul>
-                <ul>
-                  <li>{items.quantity}</li>
-                </ul>
-              </div>
-            );
-          })}
+        <div className="masa">
+          <h1 className="me">Masa 2</h1>
+          <div className="hamham">
+            {masa[1]?.map((items) => {
+              return (
+                <div key={items.yemek_adi} className="masadiv">
+                  <ul>
+                    <li>{items.yemek_adi}</li>
+                  </ul>
+                  <ul>
+                    <li>{items.quantity}</li>
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </div>
-      <div className="masa">
-        <h1 className="me">Masa 3</h1>
-        <div className="hamham">
-          {masa[2]?.map((items) => {
-            return (
-              <div key={items.yemek_adi} className="masadiv">
-                <ul>
-                  <li>{items.yemek_adi}</li>
-                </ul>
-                <ul>
-                  <li>{items.quantity}</li>
-                </ul>
-              </div>
-            );
-          })}
+        <div className="masa">
+          <h1 className="me">Masa 3</h1>
+          <div className="hamham">
+            {masa[2]?.map((items) => {
+              return (
+                <div key={items.yemek_adi} className="masadiv">
+                  <ul>
+                    <li>{items.yemek_adi}</li>
+                  </ul>
+                  <ul>
+                    <li>{items.quantity}</li>
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </div>
-      <div className="masa">
-        <h1 className="me">Masa 4</h1>
-        <div className="hamham">
-          {masa[3]?.map((items) => {
-            return (
-              <div key={items.yemek_adi} className="masadiv">
-                <ul>
-                  <li>{items.yemek_adi}</li>
-                </ul>
-                <ul>
-                  <li>{items.quantity}</li>
-                </ul>
-              </div>
-            );
-          })}
+        <div className="masa">
+          <h1 className="me">Masa 4</h1>
+          <div className="hamham">
+            {masa[3]?.map((items) => {
+              return (
+                <div key={items.yemek_adi} className="masadiv">
+                  <ul>
+                    <li>{items.yemek_adi}</li>
+                  </ul>
+                  <ul>
+                    <li>{items.quantity}</li>
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </div>
-      <div className="masa">
-        <h1 className="me">Masa 5</h1>
-        <div className="hamham">
-          {masa[4]?.map((items) => {
-            return (
-              <div key={items.yemek_adi} className="masadiv">
-                <ul>
-                  <li>{items.yemek_adi}</li>
-                </ul>
-                <ul>
-                  <li>{items.quantity}</li>
-                </ul>
-              </div>
-            );
-          })}
+        <div className="masa">
+          <h1 className="me">Masa 5</h1>
+          <div className="hamham">
+            {masa[4]?.map((items) => {
+              return (
+                <div key={items.yemek_adi} className="masadiv">
+                  <ul>
+                    <li>{items.yemek_adi}</li>
+                  </ul>
+                  <ul>
+                    <li>{items.quantity}</li>
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
-export default TablesPage;
+export default withAuthInfo(TablesPage);
