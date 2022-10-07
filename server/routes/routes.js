@@ -2,6 +2,7 @@ const express = require("express");
 const Yemek = require("../models/model");
 const Masa = require("../models/masamodel");
 const Admin = require("../models/adminModel");
+const Category = require("../models/categoryModel");
 const multer = require("multer");
 const path = require("path");
 const SharpMulter = require("sharp-multer");
@@ -79,6 +80,19 @@ router.post("/post/masa", async (req, res) => {
   }
 });
 
+router.post("/post/category", async (req, res) => {
+  const categorydata = new Category({
+    kategori: req.body.kategori,
+  });
+
+  try {
+    const categorydataToSave = await categorydata.save();
+    res.status(200).json(categorydataToSave);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
 //Admin Register
 
 router.post("/post/newAdmin", async (req, res) => {
@@ -112,6 +126,16 @@ router.get("/getYemek/:id", async (req, res) => {
 router.get("/getAll", async (req, res) => {
   try {
     const data = await Yemek.find();
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+//Get Categories
+router.get("/getCategories", async (req, res) => {
+  try {
+    const data = await Category.find();
     res.json(data);
   } catch (error) {
     res.status(500).json({ message: error.message });

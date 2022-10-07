@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import Select from "react-select";
 
@@ -7,11 +8,23 @@ function AdminPost() {
   const [kategori, setkategori] = useState({});
   const [message, setMessage] = useState("");
   const [image, setImage] = useState({ preview: "", data: "" });
-  const options = [
-    { value: "Yemekler", label: "Yemek" },
-    { value: "İçecekler", label: "İçecek" },
-    { value: "Tatlılar", label: "Tatlı" },
-  ];
+  const [fetchkategori, setFetchKategori] = useState([]);
+
+  let fetchit = async () => {
+    let fetchme = await fetch("/api/getCategories");
+    let response = await fetchme.json();
+    setFetchKategori(response);
+  };
+
+  useEffect(() => {
+    fetchit();
+  }, []);
+
+  const options = [];
+
+  fetchkategori.forEach((element) => {
+    options.push({ value: element.kategori, label: element.kategori });
+  });
 
   const handleFileChange = (e) => {
     const img = {

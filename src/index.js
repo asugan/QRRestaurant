@@ -10,6 +10,7 @@ import NotFoundPage from "./Pages/NotFoundPage";
 import AdminRegister from "./Pages/AdminRegister";
 import { AuthProvider } from "@propelauth/react";
 import "./Styles/app.scss";
+import AdminPanelCategory from "./Pages/AdminPanelCategory";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -20,6 +21,11 @@ root.render(
         <Route exact path="/admin" element={<AdminPanel />} />
         <Route exact path="/admin/masalar" element={<Masa />} />
         <Route exact path="/admin/post" element={<AdminPanelPost />} />
+        <Route
+          exact
+          path="/admin/addcategory"
+          element={<AdminPanelCategory />}
+        />
         <Route exact path="/admin/register" element={<AdminRegister />} />
         <Route exact path="/masa/:masaId" element={<Shop />} />
         <Route path="*" element={<NotFoundPage />} />
