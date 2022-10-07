@@ -9,6 +9,7 @@ import Shop from "./Pages/Shop";
 import NotFoundPage from "./Pages/NotFoundPage";
 import AdminRegister from "./Pages/AdminRegister";
 import { AuthProvider } from "@propelauth/react";
+import "./Styles/app.scss";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -16,8 +17,8 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<HomePage />} />
-        <Route exact path="/masalar" element={<Masa />} />
         <Route exact path="/admin" element={<AdminPanel />} />
+        <Route exact path="/admin/masalar" element={<Masa />} />
         <Route exact path="/admin/post" element={<AdminPanelPost />} />
         <Route exact path="/admin/register" element={<AdminRegister />} />
         <Route exact path="/masa/:masaId" element={<Shop />} />

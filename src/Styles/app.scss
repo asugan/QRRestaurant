@@ -1,3 +1,149 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body{
+  background-color: wheat;
+}
+
+h5{
+  font-size: 1.3rem;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+h2{
+  font-size: 1.5rem;
+}
+
+h1{
+  font-size: 1.7rem;
+}
+
+
+.Navbar{
+  display: flex;
+  padding: 2rem 2rem;
+  background-color: rgb(190, 163, 111);
+  gap: 2rem;
+}
+.navigationlink{
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: black;
+}
+
+.navigationlink:hover{
+  transition: 500ms;
+  color:white ;
+}
+
+
+.menucontainer{
+  padding: 2rem;
+
+  .myh1{
+    margin-top: 4rem;
+  }
+
+  h1{
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .altcontainer{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+  }
+  
+  .background{
+    background-color: rgb(190, 163, 111);
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    box-shadow:14px 20px white;
+  }
+}
+
+.container{
+  img{
+      width: 10rem;
+      height: 6rem;
+  }
+}
+
+.cart{
+display: grid;
+grid-template-columns: repeat(2,1fr);
+  .mycartyemek{
+     grid-column-start: 1;
+     grid-column-end: 2;
+    .cartyemek{
+      display: flex;
+      gap: 4rem;
+    }
+  }
+  .cartnumber{
+      display: flex;
+      flex-direction: column;
+      grid-column-start: 2;
+      grid-column-end: 3;
+    .flexbutton{
+      display: flex;
+      gap: 4rem;
+    }
+  }
+}
+
 .Postpage{
     display: flex;
     align-items: center;
@@ -30,3 +176,129 @@
     text-align: center;
     color: #36a936;
   }
+
+.admincontainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.navbar{
+  display: flex;
+  padding: 1rem 1rem;
+  gap: 2rem;
+
+  .navlink{
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: #36a936;
+    color: black;
+    padding: 1.2rem;
+    border-radius: 10px;
+  }
+  .navlink:hover{
+    background-color: azure;
+    transition: 500ms;
+  }
+}
+
+
+.shopcontainer{
+  padding: 2rem;
+
+  h1{
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .altcontainer{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+  }
+  
+  .background{
+    background-color: rgb(190, 163, 111);
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    box-shadow:14px 20px white;
+  }
+
+  .buttonss{
+    display: flex;
+    gap: 2rem;
+
+    .buttons{
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-weight: bold;
+      background-color: #36a936;
+      color: black;
+      padding: 1.2rem;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  
+    .buttons:hover {
+      background-color: azure;
+      transition: 500ms;
+    }
+  }
+}
+
+
+
+.tablecontainer{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  .me{
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      text-align: center;
+  }
+
+  .masa{
+      border: 2px solid black;
+      margin-top: 2rem;
+      gap: 2rem;
+      margin-left: 2rem;
+      margin-right: 2rem;
+      min-height: 400px;
+  }
+
+  .masadiv{
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      margin-top: 1.2rem;
+      
+  }
+
+  ul{
+      margin-left: auto;
+      margin-right: auto;
+      list-style: circle;
+  }
+
+  li{
+      color: black;
+      font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    img{
+      width: 8rem;
+      height: 5rem;
+    }
+  }
+  .tablecontainer{
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+  }
+}

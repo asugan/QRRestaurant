@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "../Styles/app.scss";
 import Select from "react-select";
 
 function AdminPost() {

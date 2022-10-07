@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import "../Styles/tablepage.scss";
 import { withAuthInfo } from "@propelauth/react";
+import { Link } from "react-router-dom";
 
 function TablesPage({ user }) {
   const [masa, setMasa] = useState([]);
@@ -36,6 +36,14 @@ function TablesPage({ user }) {
 
   return (
     <div className="container">
+      <div className="Navbar">
+        <Link className="navigationlink" to="/">
+          Anasayfa
+        </Link>
+        <Link className="navigationlink" to="/admin">
+          Admin Paneli
+        </Link>
+      </div>
       <div className="tablecontainer">
         <div className="masa">
           <h1 className="me">Masa 1</h1>

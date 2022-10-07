@@ -1,6 +1,5 @@
 import React from "react";
 import Deneme from "../Components/Deneme";
-import "../Styles/homepage.scss";
 
 function HomePage() {
   return (

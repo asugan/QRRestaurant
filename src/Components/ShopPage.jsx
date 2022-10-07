@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "../Styles/homepage.scss";
 
 function ShopPage() {
   const [yemeks, setYemek] = useState([]);
@@ -99,27 +98,94 @@ function ShopPage() {
     <div>
       <h1>Yemek Adları</h1>
 
-      {yemeks[0]?.map((yemek, id) => {
-        return (
-          <div className="background" key={id}>
-            <h1>{yemek.yemek_adi}</h1>
-            <div className="altcontainer">
-              <img src={`/images/${yemek.image}`} alt="" />
-              <h5>{yemek.fiyat} ₺</h5>
-              <h1>{number}</h1>
+      <div className="shopcontainer">
+        {yemeks[0]?.map((yemek, id) => {
+          return (
+            <div className="background" key={id}>
+              <div className="altcontainer">
+                <h1>{yemek.yemek_adi}</h1>
+                <img src={`/images/${yemek.image}`} alt="" />
+                <h5>{yemek.fiyat} ₺</h5>
+                <h1>{number}</h1>
+              </div>
+              <div className="buttonss">
+                <a
+                  className="buttons"
+                  onClick={(e) =>
+                    yemeksec(yemek._id, yemek.yemek_adi, yemek.fiyat, e)
+                  }
+                >
+                  Sepete Ekle
+                </a>
+                <a className="buttons" onClick={numberfuncplus}>
+                  +
+                </a>
+                <a className="buttons" onClick={numberfuncminus}>
+                  -
+                </a>
+              </div>
             </div>
-            <button
-              onClick={(e) =>
-                yemeksec(yemek._id, yemek.yemek_adi, yemek.fiyat, e)
-              }
-            >
-              Sepete Ekle
-            </button>
-            <button onClick={numberfuncplus}>+</button>
-            <button onClick={numberfuncminus}>--</button>
-          </div>
-        );
-      })}
+          );
+        })}
+
+        {yemeks[1]?.map((yemek, id) => {
+          return (
+            <div className="background" key={id}>
+              <div className="altcontainer">
+                <h1>{yemek.yemek_adi}</h1>
+                <img src={`/images/${yemek.image}`} alt="" />
+                <h5>{yemek.fiyat} ₺</h5>
+                <h1>{number}</h1>
+              </div>
+              <div className="buttonss">
+                <a
+                  className="buttons"
+                  onClick={(e) =>
+                    yemeksec(yemek._id, yemek.yemek_adi, yemek.fiyat, e)
+                  }
+                >
+                  Sepete Ekle
+                </a>
+                <a className="buttons" onClick={numberfuncplus}>
+                  +
+                </a>
+                <a className="buttons" onClick={numberfuncminus}>
+                  -
+                </a>
+              </div>
+            </div>
+          );
+        })}
+
+        {yemeks[2]?.map((yemek, id) => {
+          return (
+            <div className="background" key={id}>
+              <div className="altcontainer">
+                <h1>{yemek.yemek_adi}</h1>
+                <img src={`/images/${yemek.image}`} alt="" />
+                <h5>{yemek.fiyat} ₺</h5>
+                <h1>{number}</h1>
+              </div>
+              <div className="buttonss">
+                <a
+                  className="buttons"
+                  onClick={(e) =>
+                    yemeksec(yemek._id, yemek.yemek_adi, yemek.fiyat, e)
+                  }
+                >
+                  Sepete Ekle
+                </a>
+                <a className="buttons" onClick={numberfuncplus}>
+                  +
+                </a>
+                <a className="buttons" onClick={numberfuncminus}>
+                  -
+                </a>
+              </div>
+            </div>
+          );
+        })}
+      </div>
 
       <div className="ana">
         <div className="cart">
