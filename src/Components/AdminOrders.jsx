@@ -1,20 +1,17 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { withAuthInfo } from "@propelauth/react";
 import { Link } from "react-router-dom";
 
-function TablesPage({ user }) {
+function AdminOrders() {
   const [masa, setMasa] = useState([]);
+  const [isActive, setIsActive] = useState(false);
 
   const fetchme = async () => {
     try {
       setMasa([]);
-      for (let i = 1; i < 4; i++) {
-        const fetchh = await fetch(`/api/getyemek/${i}`);
-        const json = await fetchh.json();
-
-        setMasa((prevPosts) => [...prevPosts, json]);
-      }
+      let fetchh = await fetch("/api/getAllYemek");
+      let response = await fetchh.json();
+      setMasa(response);
     } catch (e) {
       console.log(e);
     }
@@ -46,12 +43,11 @@ function TablesPage({ user }) {
     fetchme();
   };
 
-  console.log(masa);
+  const göster = () => {
+    setIsActive((current) => !current);
+  };
 
-  // const interval = setInterval(() => {
-  //   fetchme();
-  // }, 2000);
-  // return () => clearInterval(interval);
+  console.log(masa);
 
   return (
     <div className="container">
@@ -63,29 +59,39 @@ function TablesPage({ user }) {
           Admin Paneli
         </Link>
       </div>
-      <div className="tablecontainer">
-        {masa?.map((items) => {
+
+      <div className="orders">
+        <div className="showbutton">
+          <a onClick={göster} className="buttons">
+            {isActive ? "Siparişleri Gizle" : "Siparişleri Göster"}
+          </a>
+        </div>
+        {masa?.map((orders) => {
           return (
-            <div className="masa">
-              <h1 className="me">Masa 1</h1>
+            <div className="orderscontainer" key={orders?._id}>
               <div className="hamham">
-                {items?.yemek.map((objects) => {
+                <h5>Sipariş ID : {orders?._id}</h5>
+                <h5>Masa Numarası : {orders?.masa_numarasi}</h5>
+              </div>
+              <div
+                className="order"
+                style={{
+                  display: isActive ? "block" : "none",
+                }}
+              >
+                {orders.yemek.map((items) => {
                   return (
-                    <div key={objects.yemek_adi} className="masadiv">
+                    <div className="orderlist">
                       <ul>
-                        <li>{objects.yemek_adi}</li>
+                        <li>{items.yemek_adi}</li>
                       </ul>
                       <ul>
-                        <li>{objects.quantity}</li>
+                        <li>{items.quantity}</li>
                       </ul>
                     </div>
                   );
                 })}
               </div>
-
-              <button onClick={(e) => updateshit(items._id, e)}>
-                Güncelle
-              </button>
             </div>
           );
         })}
@@ -94,4 +100,4 @@ function TablesPage({ user }) {
   );
 }
 
-export default withAuthInfo(TablesPage);
+export default AdminOrders;

@@ -298,6 +298,61 @@ grid-template-columns: repeat(2,1fr);
   }
 }
 
+.orders{
+  padding: 2rem;
+  
+  .showbutton{
+
+    .buttons{
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: bold;
+      background-color: #36a936;
+      color: black;
+      padding: 1.2rem;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  
+    .buttons:hover {
+      background-color: azure;
+      transition: 500ms;
+    }
+  }
+
+  .orderscontainer{
+    border: 2px solid black;
+    margin-top: 2rem;
+    padding: 1.2rem;
+
+    .hamham{
+      display: flex;
+      gap: 2rem;
+    }
+
+    a{
+      padding: 1.2rem;
+      text-decoration: none;
+      color: black;
+      background-color: #36a936;
+      font-size: 1.2rem;
+    }
+
+    .orderlist{
+      width: 300px;
+      height: auto;
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+
+      li{
+        font-size: 1.2rem;
+        margin-top: 0.5rem;
+      }
+    }
+  }
+}
+
+
 @media screen and (max-width: 600px) {
   .container {
     img{
