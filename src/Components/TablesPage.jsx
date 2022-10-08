@@ -12,11 +12,8 @@ function TablesPage({ user }) {
       for (let i = 1; i < 4; i++) {
         const fetchh = await fetch(`/api/getyemek/${i}`);
         const json = await fetchh.json();
-        if (json.yemek != null) {
-          setMasa((prevPosts) => [...prevPosts, json.yemek]);
-        } else {
-          return;
-        }
+
+        setMasa((prevPosts) => [...prevPosts, json]);
       }
     } catch (e) {
       console.log(e);
@@ -27,12 +24,34 @@ function TablesPage({ user }) {
     fetchme();
   }, []);
 
+  let updateshit = async (id, e) => {
+    e.preventDefault();
+
+    try {
+      let res = await fetch(`/api/masa/update/${id}`, {
+        method: "PATCH",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({
+          finished: true,
+        }),
+      });
+    } catch (err) {
+      console.log(err);
+    }
+
+    fetchme();
+  };
+
+  console.log(masa);
+
   // const interval = setInterval(() => {
   //   fetchme();
   // }, 2000);
   // return () => clearInterval(interval);
-
-  console.log(masa);
 
   return (
     <div className="container">
@@ -45,91 +64,31 @@ function TablesPage({ user }) {
         </Link>
       </div>
       <div className="tablecontainer">
-        <div className="masa">
-          <h1 className="me">Masa 1</h1>
-          <div className="hamham">
-            {masa[0]?.map((items) => {
-              return (
-                <div key={items.yemek_adi} className="masadiv">
-                  <ul>
-                    <li>{items.yemek_adi}</li>
-                  </ul>
-                  <ul>
-                    <li>{items.quantity}</li>
-                  </ul>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-        <div className="masa">
-          <h1 className="me">Masa 2</h1>
-          <div className="hamham">
-            {masa[1]?.map((items) => {
-              return (
-                <div key={items.yemek_adi} className="masadiv">
-                  <ul>
-                    <li>{items.yemek_adi}</li>
-                  </ul>
-                  <ul>
-                    <li>{items.quantity}</li>
-                  </ul>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-        <div className="masa">
-          <h1 className="me">Masa 3</h1>
-          <div className="hamham">
-            {masa[2]?.map((items) => {
-              return (
-                <div key={items.yemek_adi} className="masadiv">
-                  <ul>
-                    <li>{items.yemek_adi}</li>
-                  </ul>
-                  <ul>
-                    <li>{items.quantity}</li>
-                  </ul>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-        <div className="masa">
-          <h1 className="me">Masa 4</h1>
-          <div className="hamham">
-            {masa[3]?.map((items) => {
-              return (
-                <div key={items.yemek_adi} className="masadiv">
-                  <ul>
-                    <li>{items.yemek_adi}</li>
-                  </ul>
-                  <ul>
-                    <li>{items.quantity}</li>
-                  </ul>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-        <div className="masa">
-          <h1 className="me">Masa 5</h1>
-          <div className="hamham">
-            {masa[4]?.map((items) => {
-              return (
-                <div key={items.yemek_adi} className="masadiv">
-                  <ul>
-                    <li>{items.yemek_adi}</li>
-                  </ul>
-                  <ul>
-                    <li>{items.quantity}</li>
-                  </ul>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+        {masa?.map((items) => {
+          return (
+            <div className="masa">
+              <h1 className="me">Masa 1</h1>
+              <div className="hamham">
+                {items?.yemek.map((objects) => {
+                  return (
+                    <div key={objects.yemek_adi} className="masadiv">
+                      <ul>
+                        <li>{objects.yemek_adi}</li>
+                      </ul>
+                      <ul>
+                        <li>{objects.quantity}</li>
+                      </ul>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <button onClick={(e) => updateshit(items._id, e)}>
+                Güncelle
+              </button>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

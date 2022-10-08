@@ -113,9 +113,10 @@ router.post("/post/newAdmin", async (req, res) => {
 //Get by ID Method
 router.get("/getYemek/:id", async (req, res) => {
   try {
-    const data = await Masa.findOne({ masa_numarasi: req.params.id }).populate(
-      "yemek"
-    );
+    const data = await Masa.findOne({
+      masa_numarasi: req.params.id,
+      finished: false,
+    });
     res.json(data);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -126,6 +127,16 @@ router.get("/getYemek/:id", async (req, res) => {
 router.get("/getAll", async (req, res) => {
   try {
     const data = await Yemek.find();
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+//Get all Trans
+router.get("/getMasa", async (req, res) => {
+  try {
+    const data = await Masa.find().sort({ _id: -1 });
     res.json(data);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -163,8 +174,18 @@ router.get("/getCategory/:category", async (req, res) => {
 });
 
 //Update by ID Method
-router.patch("/update/:id", (req, res) => {
-  res.send("Update by ID API");
+router.patch("/masa/update/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const updatedData = { finished: req.body.finished };
+    const options = { new: true };
+
+    const result = await Masa.findByIdAndUpdate(id, updatedData, options);
+
+    res.send(result);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
 });
 
 //Delete by ID Method

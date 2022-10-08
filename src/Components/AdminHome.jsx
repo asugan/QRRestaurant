@@ -2,8 +2,6 @@ import React from "react";
 import { withAuthInfo } from "@propelauth/react";
 import { Link } from "react-router-dom";
 import AuthButtons from "../AuthButtons";
-import AuthenticatedRequestToBackend from "../AuthenticatedRequestToBackend";
-import AuthInfoOnFrontend from "../AuthInfoOnFrontend";
 
 function AdminHome({ isLoggedIn, user }) {
   if (isLoggedIn) {

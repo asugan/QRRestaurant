@@ -15,6 +15,11 @@ const MasaSchema = new mongoose.Schema({
       },
     },
   ],
+  finished: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
 });
 
 module.exports = mongoose.model("Masa", MasaSchema);
