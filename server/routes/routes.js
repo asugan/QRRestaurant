@@ -125,7 +125,16 @@ router.get("/getYemek/:id", async (req, res) => {
 
 router.get("/getAllYemek", async (req, res) => {
   try {
-    const data = await Masa.find().sort({ _id: -1 });
+    const data = await Masa.find({ finished: false }).sort({ _id: -1 });
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+router.get("/getAllFinishedYemek", async (req, res) => {
+  try {
+    const data = await Masa.find({ finished: true }).sort({ _id: -1 });
     res.json(data);
   } catch (error) {
     res.status(500).json({ message: error.message });

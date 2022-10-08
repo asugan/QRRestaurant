@@ -300,26 +300,23 @@ grid-template-columns: repeat(2,1fr);
 
 .orders{
   padding: 2rem;
-  
-  .showbutton{
 
-    .buttons{
-      text-decoration: none;
-      font-size: 1.2rem;
-      font-weight: bold;
-      background-color: #36a936;
-      color: black;
-      padding: 1.2rem;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-  
-    .buttons:hover {
-      background-color: azure;
-      transition: 500ms;
-    }
+  .buttons{
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #36a936;
+    color: black;
+    padding: 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
   }
 
+  .buttons:hover {
+    background-color: azure;
+    transition: 500ms;
+  }
+ 
   .orderscontainer{
     border: 2px solid black;
     margin-top: 2rem;

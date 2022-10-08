@@ -12,6 +12,7 @@ import { AuthProvider } from "@propelauth/react";
 import "./Styles/app.scss";
 import AdminPanelCategory from "./Pages/AdminPanelCategory";
 import AdminOrders from "./Components/AdminOrders";
+import AdminFinishedOrders from "./Components/AdminFinishedOrders";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -22,6 +23,11 @@ root.render(
         <Route exact path="/admin" element={<AdminPanel />} />
         <Route exact path="/admin/masalar" element={<Masa />} />
         <Route exact path="/admin/orders" element={<AdminOrders />} />
+        <Route
+          exact
+          path="/admin/finishedorders"
+          element={<AdminFinishedOrders />}
+        />
         <Route exact path="/admin/post" element={<AdminPanelPost />} />
         <Route
           exact

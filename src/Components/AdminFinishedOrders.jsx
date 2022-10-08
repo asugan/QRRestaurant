@@ -2,14 +2,14 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-function AdminOrders() {
+function AdminFinishedOrders() {
   const [masa, setMasa] = useState([]);
   const [isActive, setIsActive] = useState(false);
 
   const fetchme = async () => {
     try {
       setMasa([]);
-      let fetchh = await fetch("/api/getAllYemek");
+      let fetchh = await fetch("/api/getAllFinishedYemek");
       let response = await fetchh.json();
       setMasa(response);
     } catch (e) {
@@ -21,33 +21,9 @@ function AdminOrders() {
     fetchme();
   }, []);
 
-  let updateshit = async (id, e) => {
-    e.preventDefault();
-
-    try {
-      await fetch(`/api/masa/update/${id}`, {
-        method: "PATCH",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-
-        body: JSON.stringify({
-          finished: true,
-        }),
-      });
-    } catch (err) {
-      console.log(err);
-    }
-
-    fetchme();
-  };
-
   const göster = () => {
     setIsActive((current) => !current);
   };
-
-  console.log(masa);
 
   return (
     <div className="container">
@@ -72,18 +48,13 @@ function AdminOrders() {
               <div className="hamham">
                 <h5>Sipariş ID : {orders?._id}</h5>
                 <h5>Masa Numarası : {orders?.masa_numarasi}</h5>
-                <h5>Sipariş Durumu : Tamamlanmadı</h5>
-                <a
-                  className="buttons"
-                  onClick={(e) => updateshit(orders._id, e)}
-                >
-                  Sipariş Tamamlandı
-                </a>
+                <h5>Sipariş Durumu : Tamamlandı</h5>
               </div>
               <div
                 className="order"
                 style={{
                   display: isActive ? "block" : "none",
+                  marginTop: 10,
                 }}
               >
                 {orders.yemek.map((items) => {
@@ -107,4 +78,4 @@ function AdminOrders() {
   );
 }
 
-export default AdminOrders;
+export default AdminFinishedOrders;
