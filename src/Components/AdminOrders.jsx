@@ -3,15 +3,20 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 function AdminOrders() {
+  const [pageNumber, setPageNumber] = useState(0);
+  const [numberOfPages, setNumberOfPages] = useState(0);
   const [masa, setMasa] = useState([]);
   const [isActive, setIsActive] = useState(false);
+
+  const pages = new Array(numberOfPages).fill(null).map((v, i) => i);
 
   const fetchme = async () => {
     try {
       setMasa([]);
-      let fetchh = await fetch("/api/getAllYemek");
+      let fetchh = await fetch(`/api/getAllYemek?page=${pageNumber}`);
       let response = await fetchh.json();
-      setMasa(response);
+      setMasa(response.posts);
+      setNumberOfPages(response.totalPages);
     } catch (e) {
       console.log(e);
     }
@@ -19,7 +24,15 @@ function AdminOrders() {
 
   useEffect(() => {
     fetchme();
-  }, []);
+  }, [pageNumber]);
+
+  const gotoPrevious = () => {
+    setPageNumber(Math.max(0, pageNumber - 1));
+  };
+
+  const gotoNext = () => {
+    setPageNumber(Math.min(numberOfPages - 1, pageNumber + 1));
+  };
 
   let updateshit = async (id, e) => {
     e.preventDefault();
@@ -61,6 +74,7 @@ function AdminOrders() {
       </div>
 
       <div className="orders">
+        <h3>Page of {pageNumber + 1}</h3>
         <div className="showbutton">
           <a onClick={göster} className="buttons">
             {isActive ? "Siparişleri Gizle" : "Siparişleri Göster"}
@@ -103,6 +117,13 @@ function AdminOrders() {
           );
         })}
       </div>
+      <button onClick={gotoPrevious}>Previous</button>
+      {pages.map((pageIndex) => (
+        <button key={pageIndex} onClick={() => setPageNumber(pageIndex)}>
+          {pageIndex + 1}
+        </button>
+      ))}
+      <button onClick={gotoNext}>Next</button>
     </div>
   );
 }
