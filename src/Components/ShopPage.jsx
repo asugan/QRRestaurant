@@ -95,34 +95,49 @@ function ShopPage() {
   }, [yemeks]);
 
   return (
-    <div>
-      <h1>Yemek Adları</h1>
-
+    <div className="maincont">
       <div className="shopcontainer">
         {yemeks[0]?.map((yemek, id) => {
           return (
             <div className="background" key={id}>
               <div className="altcontainer">
-                <h1>{yemek.yemek_adi}</h1>
-                <img src={`/images/${yemek.image}`} alt="" />
-                <h5>{yemek.fiyat} ₺</h5>
-                <h1>{number}</h1>
+                <div className="firstdiv">
+                  <img src={`/images/${yemek.image}`} alt="" />
+                  <h1>{yemek.yemek_adi}</h1>
+                </div>
+                <div className="seconddiv">
+                  <h1>{yemek.fiyat} ₺</h1>
+                  <h1>{number} Adet</h1>
+                </div>
               </div>
               <div className="buttonss">
-                <a
-                  className="buttons"
-                  onClick={(e) =>
-                    yemeksec(yemek._id, yemek.yemek_adi, yemek.fiyat, e)
-                  }
-                >
-                  Sepete Ekle
-                </a>
-                <a className="buttons" onClick={numberfuncplus}>
-                  +
-                </a>
-                <a className="buttons" onClick={numberfuncminus}>
-                  -
-                </a>
+                <div className="firstbuttons">
+                  <a
+                    href="#name"
+                    className="buttonsplus"
+                    onClick={numberfuncplus}
+                  >
+                    +
+                  </a>
+                  <a
+                    href="#name"
+                    className="buttonsminus"
+                    onClick={numberfuncminus}
+                  >
+                    -
+                  </a>
+                </div>
+                <div className="secondbuttons">
+                  <a
+                    className="buttonssepet"
+                    onClick={(e) =>
+                      yemeksec(yemek._id, yemek.yemek_adi, yemek.fiyat, e)
+                    }
+                    href="#name"
+                  >
+                    Sepete Ekle
+                  </a>
+                </div>
               </div>
             </div>
           );
@@ -132,26 +147,43 @@ function ShopPage() {
           return (
             <div className="background" key={id}>
               <div className="altcontainer">
-                <h1>{yemek.yemek_adi}</h1>
-                <img src={`/images/${yemek.image}`} alt="" />
-                <h5>{yemek.fiyat} ₺</h5>
-                <h1>{number}</h1>
+                <div className="firstdiv">
+                  <img src={`/images/${yemek.image}`} alt="" />
+                  <h1>{yemek.yemek_adi}</h1>
+                </div>
+                <div className="seconddiv">
+                  <h1>{yemek.fiyat} ₺</h1>
+                  <h1>{number}</h1>
+                </div>
               </div>
               <div className="buttonss">
-                <a
-                  className="buttons"
-                  onClick={(e) =>
-                    yemeksec(yemek._id, yemek.yemek_adi, yemek.fiyat, e)
-                  }
-                >
-                  Sepete Ekle
-                </a>
-                <a className="buttons" onClick={numberfuncplus}>
-                  +
-                </a>
-                <a className="buttons" onClick={numberfuncminus}>
-                  -
-                </a>
+                <div className="firstbuttons">
+                  <a
+                    href="#name"
+                    className="buttonsplus"
+                    onClick={numberfuncplus}
+                  >
+                    +
+                  </a>
+                  <a
+                    href="#name"
+                    className="buttonsminus"
+                    onClick={numberfuncminus}
+                  >
+                    -
+                  </a>
+                </div>
+                <div className="secondbuttons">
+                  <a
+                    className="buttonssepet"
+                    onClick={(e) =>
+                      yemeksec(yemek._id, yemek.yemek_adi, yemek.fiyat, e)
+                    }
+                    href="#name"
+                  >
+                    Sepete Ekle
+                  </a>
+                </div>
               </div>
             </div>
           );
@@ -161,26 +193,43 @@ function ShopPage() {
           return (
             <div className="background" key={id}>
               <div className="altcontainer">
-                <h1>{yemek.yemek_adi}</h1>
-                <img src={`/images/${yemek.image}`} alt="" />
-                <h5>{yemek.fiyat} ₺</h5>
-                <h1>{number}</h1>
+                <div className="firstdiv">
+                  <img src={`/images/${yemek.image}`} alt="" />
+                  <h1>{yemek.yemek_adi}</h1>
+                </div>
+                <div className="seconddiv">
+                  <h1>{yemek.fiyat} ₺</h1>
+                  <h1>{number}</h1>
+                </div>
               </div>
               <div className="buttonss">
-                <a
-                  className="buttons"
-                  onClick={(e) =>
-                    yemeksec(yemek._id, yemek.yemek_adi, yemek.fiyat, e)
-                  }
-                >
-                  Sepete Ekle
-                </a>
-                <a className="buttons" onClick={numberfuncplus}>
-                  +
-                </a>
-                <a className="buttons" onClick={numberfuncminus}>
-                  -
-                </a>
+                <div className="firstbuttons">
+                  <a
+                    href="#name"
+                    className="buttonsplus"
+                    onClick={numberfuncplus}
+                  >
+                    +
+                  </a>
+                  <a
+                    href="#name"
+                    className="buttonsminus"
+                    onClick={numberfuncminus}
+                  >
+                    -
+                  </a>
+                </div>
+                <div className="secondbuttons">
+                  <a
+                    className="buttonssepet"
+                    onClick={(e) =>
+                      yemeksec(yemek._id, yemek.yemek_adi, yemek.fiyat, e)
+                    }
+                    href="#name"
+                  >
+                    Sepete Ekle
+                  </a>
+                </div>
               </div>
             </div>
           );
@@ -190,12 +239,18 @@ function ShopPage() {
       <div className="ana">
         <div className="cart">
           <div className="mycartyemek">
+            <h1>Sepet</h1>
             {cart.map((items, index) => {
               return (
                 <div className="cartyemek">
-                  <button onClick={() => removeFromCart(index)}>Delete</button>
+                  <a
+                    href="#name"
+                    className="buttonsminus"
+                    onClick={() => removeFromCart(index)}
+                  >
+                    -
+                  </a>
                   <h5>{items.yemek_adi}</h5>
-                  <h5>{items.yemek_fiyati} ₺</h5>
                   <h5>{items.number}</h5>
                 </div>
               );
@@ -204,9 +259,11 @@ function ShopPage() {
         </div>
       </div>
 
-      <form onSubmit={handleSubmit}>
-        <button type="submit">Create</button>
-      </form>
+      <div className="form">
+        <form onSubmit={handleSubmit}>
+          <button type="submit">Siparişi Gönder</button>
+        </form>
+      </div>
     </div>
   );
 }

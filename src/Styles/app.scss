@@ -121,29 +121,6 @@ h1{
   }
 }
 
-.cart{
-display: grid;
-grid-template-columns: repeat(2,1fr);
-  .mycartyemek{
-     grid-column-start: 1;
-     grid-column-end: 2;
-    .cartyemek{
-      display: flex;
-      gap: 4rem;
-    }
-  }
-  .cartnumber{
-      display: flex;
-      flex-direction: column;
-      grid-column-start: 2;
-      grid-column-end: 3;
-    .flexbutton{
-      display: flex;
-      gap: 4rem;
-    }
-  }
-}
-
 .Postpage{
     display: flex;
     align-items: center;
@@ -213,51 +190,146 @@ grid-template-columns: repeat(2,1fr);
 }
 
 
-.shopcontainer{
-  padding: 2rem;
+.maincont{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
 
-  h1{
-    margin-top: auto;
-    margin-bottom: auto;
-  }
-
-  .altcontainer{
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
-  }
-  
-  .background{
-    background-color: rgb(190, 163, 111);
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
+  .ana{
+    justify-self: center;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    padding:2rem;
     margin-top: 2rem;
-    padding: 1.5rem;
-    box-shadow:14px 20px white;
-  }
 
-  .buttonss{
-    display: flex;
-    gap: 2rem;
+    h1{
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
 
-    .buttons{
+    .buttonsminus{
       text-decoration: none;
-      font-size: 1.5rem;
+      font-size: 2rem;
       font-weight: bold;
       background-color: #36a936;
       color: black;
-      padding: 1.2rem;
+      padding: 0.8rem 2.2rem;
       border-radius: 10px;
       cursor: pointer;
     }
+  }
+
+  .form{
+    justify-self: center;
+  }
+
+  .shopcontainer{
+    padding: 2rem;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    justify-self: center;
+    width: 450px;
   
-    .buttons:hover {
-      background-color: azure;
-      transition: 500ms;
+    h1{
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+  
+    .altcontainer{
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+  
+      .firstdiv{
+        display: flex;
+        gap: 2rem;
+      }
+  
+      .seconddiv{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+      }
+    }
+    
+    .background{
+      background-color: rgb(190, 163, 111);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3rem;
+      margin-top: 2rem;
+      padding: 1.5rem;
+      box-shadow:14px 20px white;
+    }
+  
+    .buttonss{
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-bottom: 1.5rem;
+  
+      .firstbuttons{
+        margin-bottom: 1.5rem;
+      }
+  
+      .buttonsplus{
+        text-decoration: none;
+        font-size: 2rem;
+        font-weight: bold;
+        background-color: #36a936;
+        color: black;
+        padding: 0.8rem 2rem;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-right: 1.5rem;
+      }
+  
+      .buttonsminus{
+        text-decoration: none;
+        font-size: 2rem;
+        font-weight: bold;
+        background-color: #36a936;
+        color: black;
+        padding: 0.8rem 2.2rem;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+  
+      .buttonssepet{
+        text-decoration: none;
+        font-size: 1.5rem;
+        font-weight: bold;
+        background-color: #36a936;
+        color: black;
+        padding: 1.2rem;
+        border-radius: 10px;
+        margin-left: 0.8rem;
+        cursor: pointer;
+      }
+    
+      .buttonssepet:hover {
+        background-color: azure;
+        transition: 500ms;
+      }
+    }
+  }
+
+  .cart{
+
+    .cartyemek{
+      display: flex;
+      gap: 4rem;
+    }
+    .cartnumber{
+        display: flex;
+        flex-direction: column;
     }
   }
 }
+
+
 
 
 
@@ -360,5 +432,21 @@ grid-template-columns: repeat(2,1fr);
   .tablecontainer{
     display: grid;
     grid-template-columns: repeat(1,1fr);
+  }
+
+  .maincont{
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+
+    .ana{
+      grid-column-start:1 ;
+      grid-column-end:2 ;
+    }
+
+    .shopcontainer{
+      grid-column-start: 1;
+      grid-column-end: 2;
+      width: 80%;
+    }
   }
 }

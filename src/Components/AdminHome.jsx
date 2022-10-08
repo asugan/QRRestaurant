@@ -20,8 +20,14 @@ function AdminHome({ isLoggedIn, user }) {
           <Link className="navlink" to="/admin/post">
             Yemek Ekle
           </Link>
-          <Link className="navlink" to="/admin/masalar">
-            Masalara Git
+          <Link className="navlink" to="/admin/orders">
+            Siparişlere Git
+          </Link>
+          <Link className="navlink" to="/admin/finishedorders">
+            Tamamlanmış Siparişler
+          </Link>
+          <Link className="navlink" to="/masa/1">
+            Masa Örneği
           </Link>
         </div>
       </div>
