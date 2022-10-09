@@ -90,10 +90,6 @@ function ShopPage() {
     }
   };
 
-  useEffect(() => {
-    console.log(yemeks);
-  }, [yemeks]);
-
   return (
     <div className="maincont">
       <div className="shopcontainer">
@@ -260,9 +256,9 @@ function ShopPage() {
       </div>
 
       <div className="form">
-        <form onSubmit={handleSubmit}>
-          <button type="submit">Siparişi Gönder</button>
-        </form>
+        <a href="#name" className="buttons" onClick={handleSubmit}>
+          Siparişi Gönder
+        </a>
       </div>
     </div>
   );

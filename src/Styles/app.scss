@@ -100,7 +100,24 @@ h1{
   .altcontainer{
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 2rem;
+
+    .buttons{
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: bold;
+      background-color: #36a936;
+      color: black;
+      padding: 1.2rem;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  
+    .buttons:hover {
+      background-color: azure;
+      transition: 500ms;
+    }
   }
   
   .background{
@@ -221,6 +238,24 @@ h1{
 
   .form{
     justify-self: center;
+    padding-bottom: 3rem;
+    padding-top: 2rem;
+
+    .buttons{
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: bold;
+      background-color: #36a936;
+      color: black;
+      padding: 1.2rem;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  
+    .buttons:hover {
+      background-color: azure;
+      transition: 500ms;
+    }
   }
 
   .shopcontainer{

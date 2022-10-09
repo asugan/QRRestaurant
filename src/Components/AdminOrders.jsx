@@ -58,8 +58,6 @@ function AdminOrders() {
     setIsActive((current) => !current);
   };
 
-  console.log(masa);
-
   return (
     <div className="container">
       <div className="Navbar">

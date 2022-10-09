@@ -13,15 +13,20 @@ function AuthenticationButtons({ isLoggedIn }) {
   if (isLoggedIn) {
     return (
       <div>
-        <button onClick={redirectToAccountPage}>Account</button>
-        <button onClick={() => logoutFn()}>Logout</button>
+        <button onClick={redirectToAccountPage}>Hesabım</button>
+        <button onClick={() => logoutFn()}>Çıkış Yap</button>
       </div>
     );
   } else {
     return (
-      <div>
-        <button onClick={redirectToSignupPage}>Signup</button>
-        <button onClick={redirectToLoginPage}>Login</button>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "20rem",
+        }}
+      >
+        <button onClick={redirectToLoginPage}>Admin Girişi</button>
       </div>
     );
   }

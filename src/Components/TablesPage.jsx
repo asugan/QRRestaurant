@@ -46,8 +46,6 @@ function TablesPage({ user }) {
     fetchme();
   };
 
-  console.log(masa);
-
   // const interval = setInterval(() => {
   //   fetchme();
   // }, 2000);
