@@ -125,7 +125,7 @@ router.get("/getYemek/:id", async (req, res) => {
 
 router.get("/getAllYemek", async (req, res) => {
   try {
-    const PAGE_SIZE = 3;
+    const PAGE_SIZE = 10;
     const page = parseInt(req.query.page || "0");
     const total = await Masa.countDocuments({});
     const posts = await Masa.find({ finished: false })

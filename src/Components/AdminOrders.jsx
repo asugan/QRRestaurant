@@ -8,8 +8,6 @@ function AdminOrders() {
   const [masa, setMasa] = useState([]);
   const [isActive, setIsActive] = useState(false);
 
-  const pages = new Array(numberOfPages).fill(null).map((v, i) => i);
-
   const fetchme = async () => {
     try {
       setMasa([]);
@@ -74,9 +72,8 @@ function AdminOrders() {
       </div>
 
       <div className="orders">
-        <h3>Page of {pageNumber + 1}</h3>
         <div className="showbutton">
-          <a onClick={göster} className="buttons">
+          <a onClick={göster} href="#name" className="buttons">
             {isActive ? "Siparişleri Gizle" : "Siparişleri Göster"}
           </a>
         </div>
@@ -88,6 +85,7 @@ function AdminOrders() {
                 <h5>Masa Numarası : {orders?.masa_numarasi}</h5>
                 <h5>Sipariş Durumu : Tamamlanmadı</h5>
                 <a
+                  href="#name"
                   className="buttons"
                   onClick={(e) => updateshit(orders._id, e)}
                 >
@@ -117,13 +115,18 @@ function AdminOrders() {
           );
         })}
       </div>
-      <button onClick={gotoPrevious}>Previous</button>
-      {pages.map((pageIndex) => (
-        <button key={pageIndex} onClick={() => setPageNumber(pageIndex)}>
-          {pageIndex + 1}
-        </button>
-      ))}
-      <button onClick={gotoNext}>Next</button>
+      <div className="pagination">
+        <div className="buton1">
+          <a className="buttons" href="#name" onClick={gotoPrevious}>
+            Önceki Sayfa
+          </a>
+        </div>
+        <div className="buton2">
+          <a className="buttons" href="#name" onClick={gotoNext}>
+            Sonraki Sayfa
+          </a>
+        </div>
+      </div>
     </div>
   );
 }

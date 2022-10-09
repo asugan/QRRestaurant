@@ -38,7 +38,7 @@ function AdminFinishedOrders() {
 
       <div className="orders">
         <div className="showbutton">
-          <a onClick={göster} className="buttons">
+          <a onClick={göster} href="#name" className="buttons">
             {isActive ? "Siparişleri Gizle" : "Siparişleri Göster"}
           </a>
         </div>

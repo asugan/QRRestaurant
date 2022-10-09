@@ -373,6 +373,11 @@ h1{
 .orders{
   padding: 2rem;
 
+  .showbutton{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
   .buttons{
     text-decoration: none;
     font-size: 1.2rem;
@@ -418,6 +423,30 @@ h1{
         margin-top: 0.5rem;
       }
     }
+  }
+}
+
+.pagination{
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.2rem;
+  margin-bottom: 3rem;
+
+  .buttons{
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #36a936;
+    color: black;
+    padding: 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .buttons:hover {
+    background-color: azure;
+    transition: 500ms;
   }
 }
 
