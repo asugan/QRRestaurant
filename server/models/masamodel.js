@@ -20,7 +20,7 @@ const MasaSchema = new mongoose.Schema({
     required: true,
     default: false,
   },
-  created_date: { type: Date },
+  created_date: { type: String },
 });
 
 module.exports = mongoose.model("Masa", MasaSchema);

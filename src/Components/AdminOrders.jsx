@@ -58,6 +58,8 @@ function AdminOrders() {
     setIsActive((current) => !current);
   };
 
+  console.log(masa);
+
   if (numberOfPages > 2) {
     return (
       <div className="container">
@@ -80,6 +82,7 @@ function AdminOrders() {
             return (
               <div className="orderscontainer" key={orders?._id}>
                 <div className="hamham">
+                  <h5>Sipariş Tarihi : {orders?.created_date}</h5>
                   <h5>Sipariş ID : {orders?._id}</h5>
                   <h5>Masa Numarası : {orders?.masa_numarasi}</h5>
                   <h5>Sipariş Durumu : Tamamlanmadı</h5>
@@ -97,9 +100,9 @@ function AdminOrders() {
                     display: isActive ? "block" : "none",
                   }}
                 >
-                  {orders.yemek.map((items) => {
+                  {orders.yemek.map((items, id) => {
                     return (
-                      <div className="orderlist">
+                      <div className="orderlist" key={id}>
                         <ul>
                           <li>{items.yemek_adi}</li>
                         </ul>
@@ -150,6 +153,7 @@ function AdminOrders() {
             return (
               <div className="orderscontainer" key={orders?._id}>
                 <div className="hamham">
+                  <h5>Sipariş Tarihi : {orders?.created_date}</h5>
                   <h5>Sipariş ID : {orders?._id}</h5>
                   <h5>Masa Numarası : {orders?.masa_numarasi}</h5>
                   <h5>Sipariş Durumu : Tamamlanmadı</h5>
@@ -167,9 +171,9 @@ function AdminOrders() {
                     display: isActive ? "block" : "none",
                   }}
                 >
-                  {orders.yemek.map((items) => {
+                  {orders.yemek.map((items, id) => {
                     return (
-                      <div className="orderlist">
+                      <div className="orderlist" key={id}>
                         <ul>
                           <li>{items.yemek_adi}</li>
                         </ul>

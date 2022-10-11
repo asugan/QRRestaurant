@@ -7,6 +7,7 @@ const multer = require("multer");
 const path = require("path");
 const SharpMulter = require("sharp-multer");
 const { requireUser, optionalUser } = require("../propelauth");
+var moment = require("moment-timezone");
 
 const router = express.Router();
 
@@ -65,7 +66,7 @@ router.get("/whoami_optional", optionalUser, (req, res) => {
 router.post("/post/masa", async (req, res) => {
   const masadata = new Masa({
     masa_numarasi: req.body.masa_numarasi,
-    created_date: Date.now(),
+    created_date: moment().locale("tr").tz("Europe/Istanbul").format("LLL"),
   });
 
   const hamham = req.body.yemek;
