@@ -81,18 +81,22 @@ function AdminPost() {
           <input
             type="text"
             value={yemek_adi}
-            placeholder="Name"
+            placeholder="Yemek Adı"
             onChange={(e) => setYemek_adi(e.target.value)}
           />
           <input
             type="text"
             value={fiyat}
-            placeholder="fiyat"
+            placeholder="Fiyat"
             onChange={(e) => setfiyat(e.target.value)}
           />
-          <Select options={options} onChange={setkategori} />
+          <Select
+            placeholder="Kategori Seçin"
+            options={options}
+            onChange={setkategori}
+          />
 
-          <h1>Upload to server</h1>
+          <h1 style={{ marginTop: "25px" }}>Upload to server</h1>
           {image.preview && (
             <img src={image.preview} width="100" height="100" alt="" />
           )}
@@ -100,7 +104,7 @@ function AdminPost() {
           <hr></hr>
           <input type="file" name="image" onChange={handleFileChange}></input>
 
-          <button type="submit">Create</button>
+          <button type="submit">Yemek Oluştur</button>
 
           <div className="message">{message ? <p>{message}</p> : null}</div>
         </form>

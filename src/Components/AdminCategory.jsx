@@ -48,10 +48,10 @@ function AdminCategory() {
           <input
             type="text"
             value={category}
-            placeholder="Name"
+            placeholder="Kategori Adı"
             onChange={(e) => setCategory(e.target.value)}
           />
-          <button type="submit">Create</button>
+          <button type="submit">Kategori Oluştur</button>
         </form>
       </div>
     </div>
