@@ -227,6 +227,8 @@ h1{
     grid-column-end: 3;
     padding:2rem;
     margin-top: 2rem;
+    grid-row-start: 1;
+    grid-row-end: 2;
 
     h1{
       margin-top: 2rem;
@@ -250,6 +252,8 @@ h1{
     justify-self: center;
     padding-bottom: 3rem;
     padding-top: 2rem;
+    grid-column-start: 1;
+    grid-column-end: 2;
 
     .buttons{
       text-decoration: none;
@@ -274,6 +278,10 @@ h1{
     grid-column-end: 2;
     justify-self: center;
     width: 450px;
+
+    .category {
+      text-align: center;
+    }
   
     h1{
       margin-top: auto;
@@ -495,6 +503,14 @@ h1{
   }
 }
 
+.menuheader{
+  font-size: 2.5rem;
+  font-weight: bolder;
+  text-decoration: underline;
+  text-align: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
 
 @media screen and (max-width: 600px) {
   .container {
@@ -515,6 +531,8 @@ h1{
     .ana{
       grid-column-start:1 ;
       grid-column-end:2 ;
+      grid-row-start: auto;
+      grid-row-end: auto;
     }
 
     .shopcontainer{

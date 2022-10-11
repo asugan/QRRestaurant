@@ -14,14 +14,10 @@ function ShopPage() {
   }
 
   let asyncf = async () => {
-    let fetch1 = await fetch("/api/getCategory/Yemekler");
+    let fetch1 = await fetch("/api/getCategories");
     let data1 = await fetch1.json();
-    let fetch2 = await fetch("/api/getCategory/İçecekler");
-    let data2 = await fetch2.json();
-    let fetch3 = await fetch("/api/getCategory/Tatlılar");
-    let data3 = await fetch3.json();
 
-    setYemek([data1, data2, data3]);
+    setYemek(data1);
   };
 
   useEffect(() => {
@@ -91,174 +87,92 @@ function ShopPage() {
   };
 
   return (
-    <div className="maincont">
-      <div className="shopcontainer">
-        {yemeks[0]?.map((yemek, id) => {
+    <div className="cont">
+      <h1 className="menuheader">Menümüz</h1>
+      <div className="maincont">
+        {yemeks.map((items) => {
           return (
-            <div className="background" key={id}>
-              <div className="altcontainer">
-                <div className="firstdiv">
-                  <img src={`/images/${yemek.image}`} alt="" />
-                  <h1>{yemek.yemek_adi}</h1>
-                </div>
-                <div className="seconddiv">
-                  <h1>{yemek.fiyat} ₺</h1>
-                  <h1>{number} Adet</h1>
-                </div>
+            <div className="shopcontainer">
+              <div className="category">
+                <h1>{items.kategori}</h1>
               </div>
-              <div className="buttonss">
-                <div className="firstbuttons">
-                  <a
-                    href="#name"
-                    className="buttonsplus"
-                    onClick={numberfuncplus}
-                  >
-                    +
-                  </a>
-                  <a
-                    href="#name"
-                    className="buttonsminus"
-                    onClick={numberfuncminus}
-                  >
-                    -
-                  </a>
-                </div>
-                <div className="secondbuttons">
-                  <a
-                    className="buttonssepet"
-                    onClick={(e) =>
-                      yemeksec(yemek._id, yemek.yemek_adi, yemek.fiyat, e)
-                    }
-                    href="#name"
-                  >
-                    Sepete Ekle
-                  </a>
-                </div>
-              </div>
+              {items.yemekler.map((yemek, id) => {
+                return (
+                  <div className="background" key={id}>
+                    <div className="altcontainer">
+                      <div className="firstdiv">
+                        <img src={`/images/${yemek.image}`} alt="" />
+                        <h1>{yemek.yemek_adi}</h1>
+                      </div>
+                      <div className="seconddiv">
+                        <h1>{yemek.fiyat} ₺</h1>
+                        <h1>{number} Adet</h1>
+                      </div>
+                    </div>
+                    <div className="buttonss">
+                      <div className="firstbuttons">
+                        <a
+                          href="#name"
+                          className="buttonsplus"
+                          onClick={numberfuncplus}
+                        >
+                          +
+                        </a>
+                        <a
+                          href="#name"
+                          className="buttonsminus"
+                          onClick={numberfuncminus}
+                        >
+                          -
+                        </a>
+                      </div>
+                      <div className="secondbuttons">
+                        <a
+                          className="buttonssepet"
+                          onClick={(e) =>
+                            yemeksec(yemek._id, yemek.yemek_adi, yemek.fiyat, e)
+                          }
+                          href="#name"
+                        >
+                          Sepete Ekle
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           );
         })}
 
-        {yemeks[1]?.map((yemek, id) => {
-          return (
-            <div className="background" key={id}>
-              <div className="altcontainer">
-                <div className="firstdiv">
-                  <img src={`/images/${yemek.image}`} alt="" />
-                  <h1>{yemek.yemek_adi}</h1>
-                </div>
-                <div className="seconddiv">
-                  <h1>{yemek.fiyat} ₺</h1>
-                  <h1>{number}</h1>
-                </div>
-              </div>
-              <div className="buttonss">
-                <div className="firstbuttons">
-                  <a
-                    href="#name"
-                    className="buttonsplus"
-                    onClick={numberfuncplus}
-                  >
-                    +
-                  </a>
-                  <a
-                    href="#name"
-                    className="buttonsminus"
-                    onClick={numberfuncminus}
-                  >
-                    -
-                  </a>
-                </div>
-                <div className="secondbuttons">
-                  <a
-                    className="buttonssepet"
-                    onClick={(e) =>
-                      yemeksec(yemek._id, yemek.yemek_adi, yemek.fiyat, e)
-                    }
-                    href="#name"
-                  >
-                    Sepete Ekle
-                  </a>
-                </div>
-              </div>
+        <div className="ana">
+          <div className="cart">
+            <div className="mycartyemek">
+              <h1>Sepet</h1>
+              {cart.map((items, index) => {
+                return (
+                  <div className="cartyemek">
+                    <a
+                      href="#name"
+                      className="buttonsminus"
+                      onClick={() => removeFromCart(index)}
+                    >
+                      -
+                    </a>
+                    <h5>{items.yemek_adi}</h5>
+                    <h5>{items.number}</h5>
+                  </div>
+                );
+              })}
             </div>
-          );
-        })}
-
-        {yemeks[2]?.map((yemek, id) => {
-          return (
-            <div className="background" key={id}>
-              <div className="altcontainer">
-                <div className="firstdiv">
-                  <img src={`/images/${yemek.image}`} alt="" />
-                  <h1>{yemek.yemek_adi}</h1>
-                </div>
-                <div className="seconddiv">
-                  <h1>{yemek.fiyat} ₺</h1>
-                  <h1>{number}</h1>
-                </div>
-              </div>
-              <div className="buttonss">
-                <div className="firstbuttons">
-                  <a
-                    href="#name"
-                    className="buttonsplus"
-                    onClick={numberfuncplus}
-                  >
-                    +
-                  </a>
-                  <a
-                    href="#name"
-                    className="buttonsminus"
-                    onClick={numberfuncminus}
-                  >
-                    -
-                  </a>
-                </div>
-                <div className="secondbuttons">
-                  <a
-                    className="buttonssepet"
-                    onClick={(e) =>
-                      yemeksec(yemek._id, yemek.yemek_adi, yemek.fiyat, e)
-                    }
-                    href="#name"
-                  >
-                    Sepete Ekle
-                  </a>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
-      <div className="ana">
-        <div className="cart">
-          <div className="mycartyemek">
-            <h1>Sepet</h1>
-            {cart.map((items, index) => {
-              return (
-                <div className="cartyemek">
-                  <a
-                    href="#name"
-                    className="buttonsminus"
-                    onClick={() => removeFromCart(index)}
-                  >
-                    -
-                  </a>
-                  <h5>{items.yemek_adi}</h5>
-                  <h5>{items.number}</h5>
-                </div>
-              );
-            })}
           </div>
         </div>
-      </div>
 
-      <div className="form">
-        <a href="#name" className="buttons" onClick={handleSubmit}>
-          Siparişi Gönder
-        </a>
+        <div className="form">
+          <a href="#name" className="buttons" onClick={handleSubmit}>
+            Siparişi Gönder
+          </a>
+        </div>
       </div>
     </div>
   );
