@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 function AdminCategory() {
   const [category, setCategory] = useState("");
 
-  const myyemek = [{ _id: "6338e566ccee1431be062d6a" }];
-
   let handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -20,7 +18,6 @@ function AdminCategory() {
 
         body: JSON.stringify({
           kategori: category,
-          yemekler: myyemek,
         }),
       });
       if (res.status === 200) {
@@ -30,8 +27,6 @@ function AdminCategory() {
       console.log(err);
     }
   };
-
-  console.log(myyemek);
 
   return (
     <div className="container">

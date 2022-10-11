@@ -65,6 +65,7 @@ router.get("/whoami_optional", optionalUser, (req, res) => {
 router.post("/post/masa", async (req, res) => {
   const masadata = new Masa({
     masa_numarasi: req.body.masa_numarasi,
+    created_date: Date.now(),
   });
 
   const hamham = req.body.yemek;
@@ -87,14 +88,6 @@ router.post("/post/masa", async (req, res) => {
 router.post("/post/category", async (req, res) => {
   const categorydata = new Category({
     kategori: req.body.kategori,
-  });
-
-  const hamham = req.body.yemekler;
-
-  hamham.map((id) => {
-    return categorydata.yemekler.push({
-      _id: id._id,
-    });
   });
 
   try {
