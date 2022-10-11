@@ -1,11 +1,11 @@
 import React from "react";
-import Deneme from "../Components/Deneme";
+import HomePageComponent from "../Components/HomePageComponent";
 
 function HomePage() {
   return (
     <React.StrictMode>
       <div className="container">
-        <Deneme />
+        <HomePageComponent />
       </div>
     </React.StrictMode>
   );

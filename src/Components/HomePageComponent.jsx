@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { withAuthInfo } from "@propelauth/react";
 
-function Deneme({ isLoggedIn }) {
+function HomePageComponent({ isLoggedIn }) {
   const [yemeks, setYemek] = useState([]);
 
   let asyncf = async () => {
@@ -40,19 +40,31 @@ function Deneme({ isLoggedIn }) {
         </div>
 
         <div className="menucontainer">
-          <h1>Yemekler</h1>
-
+          <h1 className="menuheader">Menümüz</h1>
           {yemeks.map((items) => {
             return (
-              <div className="">
-                <div className="">
+              <div className="yemekcontainer">
+                <div className="category">
                   <h1>{items.kategori}</h1>
                 </div>
-                <div className="">
-                  {items.yemekler.map((yemek) => {
-                    return <h1>{yemek._id}</h1>;
-                  })}
-                </div>
+                {items.yemekler.map((yemek, id) => {
+                  return (
+                    <div className="background" key={id}>
+                      <img src={`/images/${yemek.image}`} alt="" />
+                      <div className="altcontainer">
+                        <h2>{yemek.yemek_adi}</h2>
+                        <h5>{yemek.fiyat} ₺</h5>
+                        <a
+                          href="#name"
+                          className="buttons"
+                          onClick={(e) => delyemek(yemek._id, e)}
+                        >
+                          Yemeği Sil
+                        </a>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             );
           })}
@@ -76,4 +88,4 @@ function Deneme({ isLoggedIn }) {
   }
 }
 
-export default withAuthInfo(Deneme);
+export default withAuthInfo(HomePageComponent);
